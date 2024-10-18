@@ -7,10 +7,11 @@ public class Milestone
     public MilestoneStatus Status { get; set; }
     public required string Title { get; set; }
     public required string Description { get; set; }
-    public ICollection<Emoji> Emojis { get; set; }
+    public ICollection<MilestoneEmoji> Emojis { get; set; }
     public ICollection<Reaction> Reactions { get; set; }
 }
 
+public record MilestoneEmoji(string Code, string ShortName);
 public enum MilestoneStatus
 {
     InQueue = 1,

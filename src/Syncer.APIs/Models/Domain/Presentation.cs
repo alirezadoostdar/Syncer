@@ -6,5 +6,17 @@ public class Presentation
     public required string Title { get; set; }
     public required string Description { get; set; }
     public required string Speaker { get; set; }
+    public PresentationStatus Status { get; set; }
+    public ICollection<PresentationJoiner> Joiners { get; set; }
     public ICollection<Milestone> Milestones { get; set; } = null!;
 }
+
+public enum PresentationStatus
+{
+    Create = 1,
+    Present = 2,
+    Finished = 3
+}
+
+
+public record PresentationJoiner(string Name);
