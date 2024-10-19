@@ -1,4 +1,6 @@
 ﻿
+using System.Reflection;
+
 namespace Syncer.APIs.Models.Domain;
 
 public class Presentation
@@ -29,6 +31,21 @@ public class Presentation
             throw new Exception("invalid presentaion status!");
         Milestones ??= [];
         Milestones.Add(milestone);
+    }
+
+    internal void AddJoiner(PresentationJoiner joiner)
+    {
+        if (Status != PresentationStatus.Present)
+            throw new Exception("invalid presentaion status!");
+        Joiners ??= [];
+        Joiners.Add(joiner);
+    }
+
+    internal void StartPresent()
+    {
+        if (Status != PresentationStatus.Create)
+            throw new Exception("invalid presentaion status!");
+        Status = PresentationStatus.Present;
     }
 }
 
