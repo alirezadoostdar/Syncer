@@ -1,4 +1,5 @@
-﻿namespace Syncer.APIs.Models.Domain;
+﻿
+namespace Syncer.APIs.Models.Domain;
 
 public class Presentation
 {
@@ -9,6 +10,26 @@ public class Presentation
     public PresentationStatus Status { get; set; }
     public ICollection<PresentationJoiner> Joiners { get; set; }
     public ICollection<Milestone> Milestones { get; set; } = null!;
+
+    public static Presentation Create(string id,string titlte,string description, string speaker)
+    {
+        return new Presentation
+        {
+            Description = description,
+            Id = id,
+            Title = titlte,
+            Speaker = speaker,
+            Status = PresentationStatus.Create
+        };
+    }
+
+    internal void AddMilestone(Milestone milestone)
+    {
+        if (Status != PresentationStatus.Create)
+            throw new Exception("invalid presentaion status!");
+        Milestones ??= [];
+        Milestones.Add(milestone);
+    }
 }
 
 public enum PresentationStatus

@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Syncer.APIs.Persistence;
 
@@ -10,9 +11,11 @@ using Syncer.APIs.Persistence;
 namespace Syncer.APIs.Persistence.Migrations
 {
     [DbContext(typeof(SyncerDbContext))]
-    partial class SyncerDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241019090620_RemoveShortNameFromMilstoen")]
+    partial class RemoveShortNameFromMilstoen
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
