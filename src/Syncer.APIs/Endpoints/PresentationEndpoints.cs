@@ -62,6 +62,7 @@ public static class PresentationEndpoints
 
                     presentation.StartPresent();
                     await dbContext.SaveChangesAsync();
+
                     return Results.Ok();
                 }
                 catch (Exception ex)
